@@ -275,6 +275,15 @@ if params.sdr_compute_image:
 else:
     ue.disk_image = UBUNTU_IMG
 
+role = "ue"
+ue = request.RawPC("nrue-comp-2")
+ue.component_manager_id = COMP_MANAGER_ID
+ue.hardware_type = params.sdr_nodetype
+if params.sdr_compute_image:
+    ue.disk_image = params.sdr_compute_image
+else:
+    ue.disk_image = UBUNTU_IMG
+
 ue_usrp_if = ue.addInterface("ue-usrp-if")
 ue_usrp_if.addAddress(rspec.IPv4Address("192.168.40.1", "255.255.255.0"))
 cmd = '{} "{}" {}'.format(OAI_DEPLOY_SCRIPT, oai_ran_hash, role)
