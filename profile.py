@@ -261,14 +261,14 @@ if params.sdr_compute_image:
 else:
     ue2.disk_image = UBUNTU_IMG
 
-ue_usrp_if_1 = ue.addInterface("ue-usrp-if_1")
+ue_usrp_if_1 = ue1.addInterface("ue-usrp-if_1")
 ue_usrp_if_1.addAddress(rspec.IPv4Address("192.168.40.1", "255.255.255.0"))
 cmd = '{} "{}" {}'.format(OAI_DEPLOY_SCRIPT, oai_ran_hash, role)
 ue1.addService(rspec.Execute(shell="bash", command=cmd))
 ue1.addService(rspec.Execute(shell="bash", command="/local/repository/bin/tune-cpu.sh"))
 ue1.addService(rspec.Execute(shell="bash", command="/local/repository/bin/tune-sdr-iface.sh"))
 
-ue_usrp_if_2 = ue.addInterface("ue-usrp-if_2")
+ue_usrp_if_2 = ue2.addInterface("ue-usrp-if_2")
 ue_usrp_if_2.addAddress(rspec.IPv4Address("192.168.40.1", "255.255.255.0"))
 cmd = '{} "{}" {}'.format(OAI_DEPLOY_SCRIPT, oai_ran_hash, role)
 ue2.addService(rspec.Execute(shell="bash", command=cmd))
