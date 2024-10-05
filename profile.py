@@ -10,29 +10,6 @@ import geni.rspec.emulab.pnext as PN
 tourDescription = """
 ### OAI 5G on POWDER Paired Radio Workbench
 
-This profile instantiates an experiment for testing OAI 5G in standalone mode
-using one of three Paired Radio Workbenches available on POWDER. The test
-benches are all identical and currently include two USRP X310s, each with a
-single UBX160 daughterboard, and a common 10 MHz clock and PPS reference
-provided by an OctoClock. The transceivers are connected via SMA cables through
-30 dB attenuators, providing for an interference free RF environment.
-
-Note: Select Workbench A or B if you are not a POWDER team member; Workbench C
-is for internal use only.
-
-The following will be deployed on server-class compute nodes:
-
-- Docker-based OAI 5G Core Network
-- OAI 5G gNodeB (fiber connection to 5GCN and X310)
-- OAI 5G nrUE (fiber connection to the other X310)
-
-#### Bleeding-edge Software Caveats!
-
-You may see warnings, errors, crashes, etc, when running the NR soft modems.
-Please subscribe to the OAI user or developer mailing lists to monitor and ask
-questions about the current status of OAI 5G:
-https://gitlab.eurecom.fr/oai/openairinterface5g/-/wikis/MailingList.
-
 """
 
 tourInstructions = """
