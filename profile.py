@@ -278,12 +278,12 @@ ue.addService(rspec.Execute(shell="bash", command="/local/repository/bin/tune-sd
 ue_sdr_1 = request.RawPC("nrue-sdr-1")
 ue_sdr_1.component_manager_id = COMP_MANAGER_ID
 ue_sdr_1.component_id = BENCH_SDR_IDS[params.bench_id][1]
-ue_sdr_if_1 = ue_sdr.addInterface("ue-sdr-if_1")
+ue_sdr_if_1 = ue_sdr_1.addInterface("ue-sdr-if_1")
 
 ue_sdr_2 = request.RawPC("nrue-sdr-2")
 ue_sdr_2.component_manager_id = COMP_MANAGER_ID
 ue_sdr_2.component_id = BENCH_SDR_IDS[params.bench_id][1]
-ue_sdr_if_2 = ue_sdr.addInterface("ue-sdr-if_2")
+ue_sdr_if_2 = ue_sdr_2.addInterface("ue-sdr-if_2")
 
 ue_sdr_link1 = request.Link("ue-sdr-link")
 ue_sdr_link1.bandwidth = 10*1000*1000
