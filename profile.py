@@ -244,7 +244,7 @@ nodeb_sdr_link.addInterface(nodeb_usrp_if)
 nodeb_sdr_link.addInterface(nodeb_sdr_if)
 
 role = "ue"
-ue = request.RawPC("nrue-comp")
+ue = request.RawPC("nrue-comp-1")
 ue.component_manager_id = COMP_MANAGER_ID
 ue.hardware_type = params.sdr_nodetype
 if params.sdr_compute_image:
