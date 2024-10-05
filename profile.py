@@ -291,7 +291,7 @@ ue.addService(rspec.Execute(shell="bash", command=cmd))
 ue.addService(rspec.Execute(shell="bash", command="/local/repository/bin/tune-cpu.sh"))
 ue.addService(rspec.Execute(shell="bash", command="/local/repository/bin/tune-sdr-iface.sh"))
 
-ue_sdr = request.RawPC("nrue-sdr")
+ue_sdr = request.RawPC("nrue-sdr-1")
 ue_sdr.component_manager_id = COMP_MANAGER_ID
 ue_sdr.component_id = BENCH_SDR_IDS[params.bench_id][1]
 ue_sdr_if = ue_sdr.addInterface("ue-sdr-if")
@@ -299,17 +299,17 @@ ue_sdr_if = ue_sdr.addInterface("ue-sdr-if")
 ue_sdr = request.RawPC("nrue-sdr-2")
 ue_sdr.component_manager_id = COMP_MANAGER_ID
 ue_sdr.component_id = BENCH_SDR_IDS[params.bench_id][1]
-ue_sdr_if = ue_sdr.addInterface("ue-sdr-if-2")
+ue_sdr_if = ue_sdr.addInterface("ue-sdr-if_2")
 
-ue_sdr_link = request.Link("ue-sdr-link")
-ue_sdr_link.bandwidth = 10*1000*1000
-ue_sdr_link.addInterface(ue_usrp_if)
-ue_sdr_link.addInterface(ue_sdr_if)
+ue_sdr_link1 = request.Link("ue-sdr-link")
+ue_sdr_link1.bandwidth = 10*1000*1000
+ue_sdr_link1.addInterface(ue_usrp_if)
+ue_sdr_link1.addInterface(ue_sdr_if)
 
-ue_sdr_link = request.Link("ue-sdr-link-2")
-ue_sdr_link.bandwidth = 10*1000*1000
-ue_sdr_link.addInterface(ue_usrp_if-2)
-ue_sdr_link.addInterface(ue_sdr_if-2)
+ue_sdr_link2 = request.Link("ue-sdr-link-2")
+ue_sdr_link2.bandwidth = 10*1000*1000
+ue_sdr_link2.addInterface(ue_usrp_if_2)
+ue_sdr_link2.addInterface(ue_sdr_if_2)
 
 tour = IG.Tour()
 tour.Description(IG.Tour.MARKDOWN, tourDescription)
