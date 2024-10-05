@@ -296,6 +296,11 @@ ue_sdr.component_manager_id = COMP_MANAGER_ID
 ue_sdr.component_id = BENCH_SDR_IDS[params.bench_id][1]
 ue_sdr_if = ue_sdr.addInterface("ue-sdr-if")
 
+ue_sdr = request.RawPC("nrue-sdr-2")
+ue_sdr.component_manager_id = COMP_MANAGER_ID
+ue_sdr.component_id = BENCH_SDR_IDS[params.bench_id][1]
+ue_sdr_if = ue_sdr.addInterface("ue-sdr-if")
+
 ue_sdr_link = request.Link("ue-sdr-link")
 ue_sdr_link.bandwidth = 10*1000*1000
 ue_sdr_link.addInterface(ue_usrp_if)
