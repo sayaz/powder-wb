@@ -284,27 +284,34 @@ if params.sdr_compute_image:
 else:
     ue.disk_image = UBUNTU_IMG
 
-ue_usrp_if = ue.addInterface("ue-usrp-if")
-ue_usrp_if.addAddress(rspec.IPv4Address("192.168.40.1", "255.255.255.0"))
+ue_usrp_if_1 = ue.addInterface("ue-usrp-if_1")
+ue_usrp_if_1.addAddress(rspec.IPv4Address("192.168.40.1", "255.255.255.0"))
 cmd = '{} "{}" {}'.format(OAI_DEPLOY_SCRIPT, oai_ran_hash, role)
 ue.addService(rspec.Execute(shell="bash", command=cmd))
 ue.addService(rspec.Execute(shell="bash", command="/local/repository/bin/tune-cpu.sh"))
 ue.addService(rspec.Execute(shell="bash", command="/local/repository/bin/tune-sdr-iface.sh"))
 
-ue_sdr = request.RawPC("nrue-sdr-1")
-ue_sdr.component_manager_id = COMP_MANAGER_ID
-ue_sdr.component_id = BENCH_SDR_IDS[params.bench_id][1]
-ue_sdr_if = ue_sdr.addInterface("ue-sdr-if")
+ue_usrp_if_2 = ue.addInterface("ue-usrp-if_2")
+ue_usrp_if_2.addAddress(rspec.IPv4Address("192.168.40.1", "255.255.255.0"))
+cmd = '{} "{}" {}'.format(OAI_DEPLOY_SCRIPT, oai_ran_hash, role)
+ue.addService(rspec.Execute(shell="bash", command=cmd))
+ue.addService(rspec.Execute(shell="bash", command="/local/repository/bin/tune-cpu.sh"))
+ue.addService(rspec.Execute(shell="bash", command="/local/repository/bin/tune-sdr-iface.sh"))
 
-ue_sdr = request.RawPC("nrue-sdr-2")
-ue_sdr.component_manager_id = COMP_MANAGER_ID
-ue_sdr.component_id = BENCH_SDR_IDS[params.bench_id][1]
-ue_sdr_if = ue_sdr.addInterface("ue-sdr-if_2")
+ue_sdr_1 = request.RawPC("nrue-sdr-1")
+ue_sdr_1.component_manager_id = COMP_MANAGER_ID
+ue_sdr_1.component_id = BENCH_SDR_IDS[params.bench_id][1]
+ue_sdr_if_1 = ue_sdr.addInterface("ue-sdr-if_1")
+
+ue_sdr_2 = request.RawPC("nrue-sdr-2")
+ue_sdr_2.component_manager_id = COMP_MANAGER_ID
+ue_sdr_2.component_id = BENCH_SDR_IDS[params.bench_id][1]
+ue_sdr_if_2 = ue_sdr.addInterface("ue-sdr-if_2")
 
 ue_sdr_link1 = request.Link("ue-sdr-link")
 ue_sdr_link1.bandwidth = 10*1000*1000
-ue_sdr_link1.addInterface(ue_usrp_if)
-ue_sdr_link1.addInterface(ue_sdr_if)
+ue_sdr_link1.addInterface(ue_usrp_if_1)
+ue_sdr_link1.addInterface(ue_sdr_if_1)
 
 ue_sdr_link2 = request.Link("ue-sdr-link-2")
 ue_sdr_link2.bandwidth = 10*1000*1000
